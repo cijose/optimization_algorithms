@@ -30,7 +30,7 @@ def conjugate_gradient(fx, phi, y, parameter, verbose=0, xtrue=None):
         info["fx"].append(fx(x))
         # Print the information.
         if verbose:
-            print("Iter = %4d, f(x) = %5.3e\n" % (iter, info["fx"][iter]))
+            print("Iter = %4d, f(x) = %5.3e" % (iter, info["fx"][iter]))
         # Start the clock.
         timestart = time.time()
         phip = phi(p)

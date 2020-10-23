@@ -30,7 +30,7 @@ def gradient_descent_line_search(fx, gradf, parameter, verbose=0, xtrue=None):
         info["fx"].append(fc)
         # Print the information.
         if verbose:
-            print("Iter = %4d, f(x) = %5.3e\n" % (iter, info["fx"][iter]))
+            print("Iter = %4d, f(x) = %5.3e" % (iter, info["fx"][iter]))
         # Start the clock.
         L = parameter["Lips"] / 64.0
         timestart = time.time()

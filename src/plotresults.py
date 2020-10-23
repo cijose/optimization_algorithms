@@ -22,7 +22,7 @@ def plotresults(x, info, options, fmin=None):
     # With respect to number of iterations.
     plt.figure(1)
     plt.clf()
-    methodsdone = x.keys()
+    methodsdone = list(x.keys())
     allMarkers = ["s", "d", "v", "^", ">", "<", "p", "h", "+", "o", "*", "x"]
     colors = distinguishable_colors(len(methodsdone))
     ax = plt.gca()
@@ -65,7 +65,7 @@ def plotresults(x, info, options, fmin=None):
             marker=allMarkers[myCount],
             markeredgecolor=colors[myCount],
             markerfacecolor=colors[myCount],
-            linestyle=".",
+            linestyle="-",
             markersize=7,
             label=methodsdone[myCount],
         )
@@ -80,7 +80,7 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig(options["name"] + "_Iter.eps", format="eps", dpi=1000)
+    plt.savefig("./figs/" + options["name"] + "_iter.eps", format="eps", dpi=1000)
     # With respect to time.
     plt.figure(2)
     plt.clf()
@@ -94,7 +94,7 @@ def plotresults(x, info, options, fmin=None):
             ypoints[marker_loc],
             color=colors[myCount],
             marker=allMarkers[myCount],
-            linestyle=".",
+            linestyle="-",
             markeredgecolor=colors[myCount],
             markerfacecolor=colors[myCount],
             markersize=11,
@@ -111,7 +111,7 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig(options["name"] + "_Time.eps", format="eps", dpi=1000)
+    plt.savefig("./figs/" + options["name"] + "_time.eps", format="eps", dpi=1000)
     plt.figure(3)
     plt.clf()
     for myCount in range(len(methodsdone)):
@@ -126,7 +126,7 @@ def plotresults(x, info, options, fmin=None):
             marker=allMarkers[myCount],
             markeredgecolor=colors[myCount],
             markerfacecolor=colors[myCount],
-            linestyle=".",
+            linestyle="-",
             markersize=7,
             label=methodsdone[myCount],
         )
@@ -141,7 +141,9 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
-    plt.savefig(options["name"] + "_loglog_Iter.eps", format="eps", dpi=1000)
+    plt.savefig(
+        "./figs/" + options["name"] + "_loglog_iter.eps", format="eps", dpi=1000
+    )
     # With respect to time.
     plt.figure(4)
     plt.clf()
@@ -155,7 +157,7 @@ def plotresults(x, info, options, fmin=None):
             ypoints[marker_loc],
             color=colors[myCount],
             marker=allMarkers[myCount],
-            linestyle=".",
+            linestyle="-",
             markeredgecolor=colors[myCount],
             markerfacecolor=colors[myCount],
             markersize=11,
@@ -172,6 +174,8 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
-    plt.savefig(options["name"] + "_loglog_Time.eps", format="eps", dpi=1000)
+    plt.savefig(
+        "./figs/" + options["name"] + "_loglog_time.eps", format="eps", dpi=1000
+    )
 
     plt.show()

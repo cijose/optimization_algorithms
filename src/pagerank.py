@@ -83,7 +83,7 @@ Phix = (
     lambda x: (MminITx(Mx(x) - x) + penaltyparameter * (np.sum(x))) + sigma * x
 )  # Implements Phi_sigma * x for CG method
 y = penaltyparameter  # vector y for CG algorithm
-x["CG"], info["CG"] = conjugare_gradient(fx, Phix, y, parameter)
+x["CG"], info["CG"] = conjugate_gradient(fx, Phix, y, parameter)
 # Solve numerically with PageRank algorithm (Power method).
 x["PR"], info["PR"] = power_iteration(fx, Mx, parameter)
 
