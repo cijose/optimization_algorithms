@@ -15,7 +15,7 @@ import time
 import numpy as np
 
 
-def conjugaye_gradient(fx, phi, y, parameter, verbose=0, xtrue=None):
+def conjugate_gradient(fx, phi, y, parameter, verbose=0, xtrue=None):
     # Initialize x1.
     x = parameter["x0"]
     r = phi(x) - y

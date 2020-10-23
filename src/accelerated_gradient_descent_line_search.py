@@ -14,7 +14,7 @@ import time
 import numpy as np
 
 
-def accelerated_gradient_Descent_line_search(
+def accelerated_gradient_descent_line_search(
     fx, gradf, parameter, verbose=0, xtrue=None
 ):
     # print '%s\n', repmat('*', 1, 68);

@@ -14,7 +14,7 @@ import time
 import numpy as np
 
 
-def AGD(fx, gradf, parameter, verbose=0, xtrue=None):
+def accelerated_gradient_descent(fx, gradf, parameter, verbose=0, xtrue=None):
     # Initialize x1.
     x = parameter["x0"]
     y = parameter["x0"]
