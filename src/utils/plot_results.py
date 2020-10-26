@@ -14,7 +14,7 @@ def distinguishable_colors(num_colors):
     return colors
 
 
-def plotresults(x, info, options, fmin=None):
+def plot_results(x, info, options, fmin=None):
     num_points = 17
     font = {"family": "normal", "weight": "bold", "size": 7}
     plt.rc("font", **font)
@@ -31,8 +31,8 @@ def plotresults(x, info, options, fmin=None):
         ylbl = r"$ \big( f(\mathbf{x}) - f^* \big) / f^* $"
     elif fmin == None:
         fmin = []
-        for myCount in range(len(methodsdone)):
-            fmin.append(min(info[methodsdone[myCount]]["fx"]))
+        for count in range(len(methodsdone)):
+            fmin.append(min(info[methodsdone[count]]["fx"]))
         fmin = min(fmin)
         ylbl = r"$ \big( f(\mathbf{x}) - f^*_{aprx} \big) / f^*_{aprx} $"
         print(
@@ -40,34 +40,34 @@ def plotresults(x, info, options, fmin=None):
         )
     if fmin == 0:
         ffmin = []
-        for myCount in range(len(methodsdone)):
-            ffmin.append(min(info[methodsdone[myCount]]["fx"]))
+        for count in range(len(methodsdone)):
+            ffmin.append(min(info[methodsdone[count]]["fx"]))
         ffmin = min(ffmin)
 
         ylbl = "$f(\mathbf{x})$"
-        for myCount in range(len(methodsdone)):
-            info[methodsdone[myCount]]["error"] = info[methodsdone[myCount]]["fx"]
+        for count in range(len(methodsdone)):
+            info[methodsdone[count]]["error"] = info[methodsdone[count]]["fx"]
         print("f^* is 0 so you will get f(x) vs number of iterations and time. \n")
     else:
-        for myCount in range(len(methodsdone)):
-            info[methodsdone[myCount]]["error"] = (
-                info[methodsdone[myCount]]["fx"] - fmin
+        for count in range(len(methodsdone)):
+            info[methodsdone[count]]["error"] = (
+                info[methodsdone[count]]["fx"] - fmin
             ) / fmin
-    for myCount in range(len(methodsdone)):
-        ypoints = np.asarray(info[methodsdone[myCount]]["error"])
+    for count in range(len(methodsdone)):
+        ypoints = np.asarray(info[methodsdone[count]]["error"])
         xpoints = np.asarray(np.arange(len(ypoints)))
         marker_loc = [int(i) for i in np.linspace(0, len(xpoints) - 1, num_points)]
-        plt.semilogy(xpoints, ypoints, linewidth=2, color=colors[myCount], label=None)
+        plt.semilogy(xpoints, ypoints, linewidth=2, color=colors[count], label=None)
         plt.semilogy(
             xpoints[marker_loc],
             ypoints[marker_loc],
-            color=colors[myCount],
-            marker=allMarkers[myCount],
-            markeredgecolor=colors[myCount],
-            markerfacecolor=colors[myCount],
+            color=colors[count],
+            marker=allMarkers[count],
+            markeredgecolor=colors[count],
+            markerfacecolor=colors[count],
             linestyle="-",
             markersize=7,
-            label=methodsdone[myCount],
+            label=methodsdone[count],
         )
     plt.text(
         0.01,
@@ -80,25 +80,25 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig("./figs/" + options["name"] + "_iter.eps", format="eps", dpi=1000)
+    plt.savefig(options["dir"] + "/" + options["name"] + "_iter.eps", format="eps", dpi=1000)
     # With respect to time.
     plt.figure(2)
     plt.clf()
-    for myCount in range(len(methodsdone)):
-        ypoints = np.asarray(info[methodsdone[myCount]]["error"])
-        xpoints = np.asarray(info[methodsdone[myCount]]["time"])
+    for count in range(len(methodsdone)):
+        ypoints = np.asarray(info[methodsdone[count]]["error"])
+        xpoints = np.asarray(info[methodsdone[count]]["time"])
         marker_loc = [int(i) for i in np.linspace(0, len(xpoints) - 1, num_points)]
-        plt.semilogy(xpoints, ypoints, linewidth=2, color=colors[myCount], label=None)
+        plt.semilogy(xpoints, ypoints, linewidth=2, color=colors[count], label=None)
         plt.semilogy(
             xpoints[marker_loc],
             ypoints[marker_loc],
-            color=colors[myCount],
-            marker=allMarkers[myCount],
+            color=colors[count],
+            marker=allMarkers[count],
             linestyle="-",
-            markeredgecolor=colors[myCount],
-            markerfacecolor=colors[myCount],
+            markeredgecolor=colors[count],
+            markerfacecolor=colors[count],
             markersize=11,
-            label=methodsdone[myCount],
+            label=methodsdone[count],
         )
     plt.text(
         0.01,
@@ -111,24 +111,24 @@ def plotresults(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig("./figs/" + options["name"] + "_time.eps", format="eps", dpi=1000)
+    plt.savefig(options["dir"] + "/" + options["name"] + "_time.eps", format="eps", dpi=1000)
     plt.figure(3)
     plt.clf()
-    for myCount in range(len(methodsdone)):
-        ypoints = np.asarray(info[methodsdone[myCount]]["error"])
+    for count in range(len(methodsdone)):
+        ypoints = np.asarray(info[methodsdone[count]]["error"])
         xpoints = np.asarray(np.arange(len(ypoints)))
         marker_loc = [int(i) for i in np.linspace(0, len(xpoints) - 1, num_points)]
-        plt.loglog(xpoints, ypoints, linewidth=2, color=colors[myCount], label=None)
+        plt.loglog(xpoints, ypoints, linewidth=2, color=colors[count], label=None)
         plt.loglog(
             xpoints[marker_loc],
             ypoints[marker_loc],
-            color=colors[myCount],
-            marker=allMarkers[myCount],
-            markeredgecolor=colors[myCount],
-            markerfacecolor=colors[myCount],
+            color=colors[count],
+            marker=allMarkers[count],
+            markeredgecolor=colors[count],
+            markerfacecolor=colors[count],
             linestyle="-",
             markersize=7,
-            label=methodsdone[myCount],
+            label=methodsdone[count],
         )
     plt.text(
         0.01,
@@ -142,26 +142,26 @@ def plotresults(x, info, options, fmin=None):
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
     plt.savefig(
-        "./figs/" + options["name"] + "_loglog_iter.eps", format="eps", dpi=1000
+        options["dir"] + "/" + options["name"] + "_log_log_iter.eps", format="eps", dpi=1000
     )
     # With respect to time.
     plt.figure(4)
     plt.clf()
-    for myCount in range(len(methodsdone)):
-        ypoints = np.asarray(info[methodsdone[myCount]]["error"])
-        xpoints = np.asarray(info[methodsdone[myCount]]["time"])
+    for count in range(len(methodsdone)):
+        ypoints = np.asarray(info[methodsdone[count]]["error"])
+        xpoints = np.asarray(info[methodsdone[count]]["time"])
         marker_loc = [int(i) for i in np.linspace(0, len(xpoints) - 1, num_points)]
-        plt.loglog(xpoints, ypoints, linewidth=2, color=colors[myCount], label=None)
+        plt.loglog(xpoints, ypoints, linewidth=2, color=colors[count], label=None)
         plt.loglog(
             xpoints[marker_loc],
             ypoints[marker_loc],
-            color=colors[myCount],
-            marker=allMarkers[myCount],
+            color=colors[count],
+            marker=allMarkers[count],
             linestyle="-",
-            markeredgecolor=colors[myCount],
-            markerfacecolor=colors[myCount],
+            markeredgecolor=colors[count],
+            markerfacecolor=colors[count],
             markersize=11,
-            label=methodsdone[myCount],
+            label=methodsdone[count],
         )
     plt.text(
         0.01,
@@ -175,7 +175,7 @@ def plotresults(x, info, options, fmin=None):
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
     plt.savefig(
-        "../figs/" + options["name"] + "_loglog_time.eps", format="eps", dpi=1000
+        options["dir"] + "/" + options["name"] + "_log_log_time.eps", format="eps", dpi=1000
     )
 
     plt.show()

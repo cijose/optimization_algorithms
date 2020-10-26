@@ -1,21 +1,21 @@
 import numpy as np
-from gradient_descent import gradient_descent
-from accelerated_gradient_descent import accelerated_gradient_descent
-from accelerated_gradient_descent_adaptive_restart import (
+from algorithms.gradient_descent import gradient_descent
+from algorithms.accelerated_gradient_descent import accelerated_gradient_descent
+from algorithms.accelerated_gradient_descent_adaptive_restart import (
     accelerated_gradient_descent_adaptive_restart,
 )
-from gradient_descent_line_search import gradient_descent_line_search
-from accelerated_gradient_descent_line_search import (
+from algorithms.gradient_descent_line_search import gradient_descent_line_search
+from algorithms.accelerated_gradient_descent_line_search import (
     accelerated_gradient_descent_line_search,
 )
-from accelerated_gradient_descent_adaptive_restart_line_search import (
+from algorithms.accelerated_gradient_descent_adaptive_restart_line_search import (
     accelerated_gradient_descent_adaptive_restart_line_search,
 )
-from conjugate_gradient import conjugate_gradient
-from power_iteration import power_iteration
+from algorithms.conjugate_gradient import conjugate_gradient
+from algorithms.power_iteration import power_iteration
 
-import plotresults as plotresults
-import list2matrix as list2matrix
+from utils.plot_results import plot_results
+from utils.list2matrix import list2matrix
 
 datasetname = "Wiki-Vote.txt"  # Change ??? appropriately to load data.
 # datasetname = 'Slashdot0811.txt'  # Change ??? appropriately to load data
@@ -24,7 +24,7 @@ datasetname = "Wiki-Vote.txt"  # Change ??? appropriately to load data.
 
 name = datasetname[0:-4]
 datasetname = "../data/" + datasetname
-E = list2matrix.list2matrix(
+E = list2matrix(
     datasetname
 )  # I normalize the columns after reading the edge list
 n = E.shape[0]
@@ -76,7 +76,6 @@ x["AGDR"], info["AGDR"] = accelerated_gradient_descent_adaptive_restart(
 x["LSAGDR"], info["LSAGDR"] = accelerated_gradient_descent_adaptive_restart_line_search(
     fx, gradf, parameter, verbose=1
 )
-# plotresults.plotresults(x, info)
 
 # Solve numerically with CG.
 Phix = (
@@ -88,5 +87,5 @@ x["CG"], info["CG"] = conjugate_gradient(fx, Phix, y, parameter)
 x["PR"], info["PR"] = power_iteration(fx, Mx, parameter)
 
 print("Numerical solution process is completed. \n")
-options = {"name": "Pagerank-" + name}
-plotresults.plotresults(x, info, options, fmin=0)
+options = {"dir": "../figs", "name": "Pagerank-" + name}
+plot_results(x, info, options, fmin=0)
