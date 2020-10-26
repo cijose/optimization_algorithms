@@ -84,5 +84,5 @@ x["CG"], info["CG"] = conjugate_gradient(fx, Phix, y, parameter)
 x["PR"], info["PR"] = power_iteration(fx, Mx, parameter)
 
 print("Numerical solution process is completed. \n")
-options = {"dir": "../figs", "name": "Pagerank-" + name}
+options = {"dir": "../figs", "name": "page-rank-" + name}
 plot_results(x, info, options, fmin=0)

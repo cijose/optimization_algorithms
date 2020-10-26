@@ -19,22 +19,8 @@ from algorithms.quasi_newton import quasi_newton
 from utils.plot_results import plot_results
 
 cfg = {}
-dataset_name = "w5a"
-"""
-A,b = svmutils.load_svmlight_file('./data/'+dataset_name+'.tr')
-cfg['n'],cfg['p'] = A.shape
-b= np.asarray(b)
-b[b>1] = -1.
-perm = np.random.permutation(cfg['n'])
-A = A[perm, :]
-b = b[perm]
-ntr = round(cfg['n']*3./4.)
-Atr = A[0:ntr, :]
-btr = b[0:ntr]
-Ate = A[ntr:-1, :]
-bte = b[ntr:-1]
-"""
 data_dir = "../data/"
+dataset_name = "w5a"
 Atr, btr = load_svmlight_file(data_dir + dataset_name + ".tr")
 # btr[btr>1] = -1.
 cfg["n"], cfg["p"] = Atr.shape
@@ -184,5 +170,5 @@ if chk["QNM"]:
 
 print("Numerical solution process is completed.")
 # Plot the results.
-options = {"dir": "../figs", "name": "LogReg-" + dataset_name}
+options = {"dir": "../figs", "name": "logistic-regression-" + dataset_name}
 plot_results(x, info, options, fmin=0)

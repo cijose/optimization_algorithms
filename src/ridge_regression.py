@@ -111,5 +111,5 @@ if cfg["noisestd"] != 0 and cfg["n"] >= cfg["p"]:
     )
     fmin = fx(xmin)
 # Plot the results.
-options = {"dir": "../figs", "name": "RidgeRegression"}
+options = {"dir": "../figs", "name": "ridge-regression"}
 plot_results(x, info, options, fmin=0)
