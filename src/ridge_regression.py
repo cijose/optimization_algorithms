@@ -1,20 +1,20 @@
 import numpy as np
 import scipy
 
-from gradient_descent import gradient_descent
-from accelerated_gradient_descent import accelerated_gradient_descent
-from accelerated_gradient_descent_adaptive_restart import (
+from algorithms.gradient_descent import gradient_descent
+from algorithms.accelerated_gradient_descent import accelerated_gradient_descent
+from algorithms.accelerated_gradient_descent_adaptive_restart import (
     accelerated_gradient_descent_adaptive_restart,
 )
-from gradient_descent_line_search import gradient_descent_line_search
-from accelerated_gradient_descent_line_search import (
+from algorithms.gradient_descent_line_search import gradient_descent_line_search
+from algorithms.accelerated_gradient_descent_line_search import (
     accelerated_gradient_descent_line_search,
 )
-from accelerated_gradient_descent_adaptive_restart_line_search import (
+from algorithms.accelerated_gradient_descent_adaptive_restart_line_search import (
     accelerated_gradient_descent_adaptive_restart_line_search,
 )
-from conjugate_gradient import conjugate_gradient
-import plotresults as plotresults
+from algorithms.conjugate_gradient import conjugate_gradient
+from utils.plot_results import plot_results
 
 # Parameters for synthetic data.
 cfg = {}
@@ -112,5 +112,5 @@ if cfg["noisestd"] != 0 and cfg["n"] >= cfg["p"]:
     )
     fmin = fx(xmin)
 # Plot the results.
-options = {"name": "RidgeRegression"}
-plotresults.plotresults(x, info, options, fmin=0)
+options = {"dir": "../figs" , "name": "RidgeRegression"}
+plot_results(x, info, options, fmin=0)
