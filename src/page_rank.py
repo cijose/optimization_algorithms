@@ -1,21 +1,20 @@
 import numpy as np
-from algorithms.gradient_descent import gradient_descent
-from algorithms.accelerated_gradient_descent import accelerated_gradient_descent
-from algorithms.accelerated_gradient_descent_adaptive_restart import (
-    accelerated_gradient_descent_adaptive_restart,
-)
-from algorithms.gradient_descent_line_search import gradient_descent_line_search
-from algorithms.accelerated_gradient_descent_line_search import (
-    accelerated_gradient_descent_line_search,
-)
-from algorithms.accelerated_gradient_descent_adaptive_restart_line_search import (
-    accelerated_gradient_descent_adaptive_restart_line_search,
-)
-from algorithms.conjugate_gradient import conjugate_gradient
-from algorithms.power_iteration import power_iteration
 
-from utils.plot_results import plot_results
+from algorithms.accelerated_gradient_descent import \
+    accelerated_gradient_descent
+from algorithms.accelerated_gradient_descent_adaptive_restart import \
+    accelerated_gradient_descent_adaptive_restart
+from algorithms.accelerated_gradient_descent_adaptive_restart_line_search import \
+    accelerated_gradient_descent_adaptive_restart_line_search
+from algorithms.accelerated_gradient_descent_line_search import \
+    accelerated_gradient_descent_line_search
+from algorithms.conjugate_gradient import conjugate_gradient
+from algorithms.gradient_descent import gradient_descent
+from algorithms.gradient_descent_line_search import \
+    gradient_descent_line_search
+from algorithms.power_iteration import power_iteration
 from utils.list2matrix import list2matrix
+from utils.plot_results import plot_results
 
 datasetname = "Wiki-Vote.txt"  # Change ??? appropriately to load data.
 # datasetname = 'Slashdot0811.txt'  # Change ??? appropriately to load data
@@ -24,9 +23,7 @@ datasetname = "Wiki-Vote.txt"  # Change ??? appropriately to load data.
 
 name = datasetname[0:-4]
 datasetname = "../data/" + datasetname
-E = list2matrix(
-    datasetname
-)  # I normalize the columns after reading the edge list
+E = list2matrix(datasetname)  # I normalize the columns after reading the edge list
 n = E.shape[0]
 p = 0.15
 # Damping factor.

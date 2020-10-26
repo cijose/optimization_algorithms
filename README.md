@@ -1,1 +1,1 @@
-# optimization_algorithms
+#Convex optimization algorithms in python

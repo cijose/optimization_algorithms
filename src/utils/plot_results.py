@@ -1,6 +1,7 @@
+import colorsys
+
 import matplotlib
 import matplotlib.pyplot as plt
-import colorsys
 import numpy as np
 
 
@@ -80,7 +81,9 @@ def plot_results(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig(options["dir"] + "/" + options["name"] + "_iter.eps", format="eps", dpi=1000)
+    plt.savefig(
+        options["dir"] + "/" + options["name"] + "_iter.eps", format="eps", dpi=1000
+    )
     # With respect to time.
     plt.figure(2)
     plt.clf()
@@ -111,7 +114,9 @@ def plot_results(x, info, options, fmin=None):
     plt.ylabel(ylbl)
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"])
-    plt.savefig(options["dir"] + "/" + options["name"] + "_time.eps", format="eps", dpi=1000)
+    plt.savefig(
+        options["dir"] + "/" + options["name"] + "_time.eps", format="eps", dpi=1000
+    )
     plt.figure(3)
     plt.clf()
     for count in range(len(methodsdone)):
@@ -142,7 +147,9 @@ def plot_results(x, info, options, fmin=None):
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
     plt.savefig(
-        options["dir"] + "/" + options["name"] + "_log_log_iter.eps", format="eps", dpi=1000
+        options["dir"] + "/" + options["name"] + "_log_log_iter.eps",
+        format="eps",
+        dpi=1000,
     )
     # With respect to time.
     plt.figure(4)
@@ -175,7 +182,9 @@ def plot_results(x, info, options, fmin=None):
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
     plt.savefig(
-        options["dir"] + "/" + options["name"] + "_log_log_time.eps", format="eps", dpi=1000
+        options["dir"] + "/" + options["name"] + "_log_log_time.eps",
+        format="eps",
+        dpi=1000,
     )
 
     plt.show()
