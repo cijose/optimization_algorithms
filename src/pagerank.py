@@ -23,7 +23,7 @@ datasetname = "Wiki-Vote.txt"  # Change ??? appropriately to load data.
 # datasetname = 'web-Google.txt'  # Change ??? appropriately to load data
 
 name = datasetname[0:-4]
-datasetname = "./data/" + datasetname
+datasetname = "../data/" + datasetname
 E = list2matrix.list2matrix(
     datasetname
 )  # I normalize the columns after reading the edge list

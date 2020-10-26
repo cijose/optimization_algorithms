@@ -175,7 +175,7 @@ def plotresults(x, info, options, fmin=None):
     plt.legend(numpoints=1, markerscale=1.0)
     plt.title(options["name"] + "-loglog")
     plt.savefig(
-        "./figs/" + options["name"] + "_loglog_time.eps", format="eps", dpi=1000
+        "../figs/" + options["name"] + "_loglog_time.eps", format="eps", dpi=1000
     )
 
     plt.show()
